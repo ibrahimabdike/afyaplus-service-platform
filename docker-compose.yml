@@ -1,0 +1,19 @@
+services:
+  triage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: afyaplus-triage:1.0.0
+    env_file: .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+  agent:
+    build:
+      context: .
+      dockerfile: agent/Dockerfile
+    image: afyaplus-agent:1.0.0
+    env_file: .env
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
